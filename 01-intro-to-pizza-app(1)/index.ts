@@ -1,13 +1,13 @@
 type Pizza = {
-  id: number,
-  name: string,
-  price: number
-}
+  id: number;
+  name: string;
+  price: number;
+};
 type Order = {
-  id: number,
-  pizza: Pizza,
-  status: "ordered" | "completed"
-}
+  id: number;
+  pizza: Pizza;
+  status: "ordered" | "completed";
+};
 
 const menu: Pizza[] = [
   { id: 1, name: "Margherita", price: 8 },
@@ -26,13 +26,12 @@ function addNewPizza(pizza: Pizza) {
 addNewPizza({ id: 5, name: "My Mac", price: 20 });
 addNewPizza({ id: 6, name: "Chicken BBQ", price: 20 });
 
-
 let id = 0;
 function placeOrder(pizzaName: string) {
   if (menu.some((pizzaObj) => pizzaObj.name === pizzaName)) {
     const pizza = menu.find((pizzaObj) => pizzaObj.name === pizzaName);
     if (!pizza) {
-      return
+      return;
     }
     cashInRegister += pizza.price;
     const newOrder: Order = { id: id, pizza: pizza, status: "ordered" };
@@ -47,29 +46,31 @@ function placeOrder(pizzaName: string) {
 function completeOrder(orderId: number) {
   const order = orderQueue.find((orderObj: Order) => orderObj.id === orderId);
   if (!order) {
-    console.log(`${orderId} was not in the order queue`)
-    return
+    console.log(`${orderId} was not in the order queue`);
+    return;
   }
   order.status = "completed";
   return order;
 }
 
-const getPizzaDetail = (identifier: Pizza | string | number) => {
-  if (!identifier) {
-    console.log("Identifier is required")
-    return
-  }
+const getPizzaDetail = (
+  identifier: Pizza | string | number
+): Pizza | undefined => {
   if (typeof identifier === "string") {
-    return menu.find(pizza => pizza.name.toLowerCase() === identifier.toLowerCase())
+    return menu.find(
+      (pizza) => pizza.name.toLowerCase() === identifier.toLowerCase()
+    );
   } else if (typeof identifier === "number") {
-    return menu.find(pizza => pizza.id === identifier)
+    return menu.find((pizza) => pizza.id === identifier);
   } else {
-    throw new TypeError("Parameter `identifier` must be either a string or a number")
+    throw new TypeError(
+      "Parameter `identifier` must be either a string or a number"
+    );
   }
-}
+};
 
-console.log(getPizzaDetail("Margherita"))
-console.log(getPizzaDetail(2))
+console.log(getPizzaDetail("Margherita"));
+console.log(getPizzaDetail(2));
 // placeOrder("Margherita");
 // placeOrder("Pepperoni");
 // console.log(menu);
