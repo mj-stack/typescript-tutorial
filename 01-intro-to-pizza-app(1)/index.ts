@@ -19,7 +19,7 @@ const menu: Pizza[] = [
 let cashInRegister = 100;
 const orderQueue: Order[] = [];
 
-function addNewPizza(pizza: Pizza) {
+function addNewPizza(pizza: Pizza): void {
   menu.push(pizza);
 }
 
@@ -27,7 +27,7 @@ addNewPizza({ id: 5, name: "My Mac", price: 20 });
 addNewPizza({ id: 6, name: "Chicken BBQ", price: 20 });
 
 let id = 0;
-function placeOrder(pizzaName: string) {
+function placeOrder(pizzaName: string): Order | undefined {
   if (menu.some((pizzaObj) => pizzaObj.name === pizzaName)) {
     const pizza = menu.find((pizzaObj) => pizzaObj.name === pizzaName);
     if (!pizza) {
@@ -43,7 +43,7 @@ function placeOrder(pizzaName: string) {
   }
 }
 
-function completeOrder(orderId: number) {
+function completeOrder(orderId: number): Order | undefined {
   const order = orderQueue.find((orderObj: Order) => orderObj.id === orderId);
   if (!order) {
     console.log(`${orderId} was not in the order queue`);
