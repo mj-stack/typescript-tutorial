@@ -50,6 +50,17 @@ function placeOrder(pizzaName: string): Order | undefined {
   }
 }
 
+function addToArray<T>(array: T[], item: T): T[] {
+  array.push(item);
+  return array;
+}
+
+addToArray(menu, { id: pizzaId++, name: "Chicken Bacon Ranch", price: 12 });
+addToArray(orderQueue, { id: orderId++, pizza: menu[2], status: "completed" });
+
+console.log(menu);
+console.log(orderQueue);
+
 function completeOrder(orderId: number): Order | undefined {
   const order = orderQueue.find((orderObj: Order) => orderObj.id === orderId);
   if (!order) {
