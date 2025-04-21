@@ -1,4 +1,5 @@
 type Pizza = {
+  id: number,
   name: string,
   price: number
 }
@@ -8,11 +9,11 @@ type Order = {
   status: "ordered" | "completed"
 }
 
-const menu = [
-  { name: "Margherita", price: 8 },
-  { name: "Pepperoni", price: 10 },
-  { name: "Hawaiian", price: 10 },
-  { name: "Veggie", price: 9 },
+const menu: Pizza[] = [
+  { id: 1, name: "Margherita", price: 8 },
+  { id: 2, name: "Pepperoni", price: 10 },
+  { id: 3, name: "Hawaiian", price: 10 },
+  { id: 4, name: "Veggie", price: 9 },
 ];
 
 let cashInRegister = 100;
@@ -22,7 +23,8 @@ function addNewPizza(pizza: Pizza) {
   menu.push(pizza);
 }
 
-addNewPizza({ name: "My Mac", price: 20 });
+addNewPizza({ id: 5, name: "My Mac", price: 20 });
+addNewPizza({ id: 6, name: "Chicken BBQ", price: 20 });
 
 
 let id = 0;
