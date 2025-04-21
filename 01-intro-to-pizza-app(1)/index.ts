@@ -61,9 +61,10 @@ const getPizzaDetail = (identifier: Pizza | string | number) => {
   }
   if (typeof identifier === "string") {
     return menu.find(pizza => pizza.name.toLowerCase() === identifier.toLowerCase())
-  }
-  if (typeof identifier === "number") {
+  } else if (typeof identifier === "number") {
     return menu.find(pizza => pizza.id === identifier)
+  } else {
+    throw new TypeError("Parameter `identifier` must be either a string or a number")
   }
 }
 
