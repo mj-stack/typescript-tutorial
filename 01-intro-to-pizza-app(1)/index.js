@@ -1,17 +1,20 @@
-var menu = [
-    { id: 1, name: "Margherita", price: 8 },
-    { id: 2, name: "Pepperoni", price: 10 },
-    { id: 3, name: "Hawaiian", price: 10 },
-    { id: 4, name: "Veggie", price: 9 },
-];
+var menu = [];
 var cashInRegister = 100;
 var orderQueue = [];
+var pizzaId = 1;
 function addNewPizza(pizza) {
     menu.push(pizza);
+    pizza.id = pizzaId;
+    pizzaId++;
 }
-addNewPizza({ id: 5, name: "My Mac", price: 20 });
-addNewPizza({ id: 6, name: "Chicken BBQ", price: 20 });
-var id = 0;
+addNewPizza({ id: pizzaId, name: "Margherita", price: 8 });
+addNewPizza({ id: pizzaId, name: "Pepperoni", price: 10 });
+addNewPizza({ id: pizzaId, name: "Hawaiian", price: 10 });
+addNewPizza({ id: pizzaId, name: "Veggie", price: 9 });
+addNewPizza({ id: pizzaId, name: "My Mac", price: 20 });
+addNewPizza({ id: pizzaId, name: "Chicken BBQ", price: 20 });
+console.log(menu);
+var orderId = 0;
 function placeOrder(pizzaName) {
     if (menu.some(function (pizzaObj) { return pizzaObj.name === pizzaName; })) {
         var pizza = menu.find(function (pizzaObj) { return pizzaObj.name === pizzaName; });
@@ -19,9 +22,9 @@ function placeOrder(pizzaName) {
             return;
         }
         cashInRegister += pizza.price;
-        var newOrder = { id: id, pizza: pizza, status: "ordered" };
+        var newOrder = { id: orderId, pizza: pizza, status: "ordered" };
         orderQueue.push(newOrder);
-        id++;
+        orderId++;
         return newOrder;
     }
     else {
@@ -38,19 +41,18 @@ function completeOrder(orderId) {
     return order;
 }
 var getPizzaDetail = function (identifier) {
-    if (!identifier) {
-        console.log("Identifier is required");
-        return;
-    }
     if (typeof identifier === "string") {
         return menu.find(function (pizza) { return pizza.name.toLowerCase() === identifier.toLowerCase(); });
     }
-    if (typeof identifier === "number") {
+    else if (typeof identifier === "number") {
         return menu.find(function (pizza) { return pizza.id === identifier; });
     }
+    else {
+        throw new TypeError("Parameter `identifier` must be either a string or a number");
+    }
 };
-console.log(getPizzaDetail("Margherita"));
-console.log(getPizzaDetail(2));
+// console.log(getPizzaDetail("Margherita"));
+// console.log(getPizzaDetail(2));
 // placeOrder("Margherita");
 // placeOrder("Pepperoni");
 // console.log(menu);
