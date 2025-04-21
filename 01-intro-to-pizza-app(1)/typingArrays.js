@@ -10,5 +10,7 @@ var People2 = {
     age: 66,
     isStudent: false
 };
+// let PeopleArray: People[] =[People1, People2]
+// console.log(PeopleArray)
 var PeopleArray = [People1, People2];
 console.log(PeopleArray);

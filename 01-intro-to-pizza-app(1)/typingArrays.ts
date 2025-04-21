@@ -19,5 +19,8 @@ let People2: People = {
   isStudent: false
 }
 
-let PeopleArray: People[] =[People1, People2]
+// let PeopleArray: People[] =[People1, People2]
+// console.log(PeopleArray)
+
+let PeopleArray: Array<People> =[People1, People2]
 console.log(PeopleArray)
