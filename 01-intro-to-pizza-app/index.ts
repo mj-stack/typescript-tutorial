@@ -55,8 +55,16 @@ function addToArray<T>(array: T[], item: T): T[] {
   return array;
 }
 
-addToArray(menu, { id: pizzaId++, name: "Chicken Bacon Ranch", price: 12 });
-addToArray(orderQueue, { id: orderId++, pizza: menu[2], status: "completed" });
+addToArray<Pizza>(menu, {
+  id: pizzaId++,
+  name: "Chicken Bacon Ranch",
+  price: 12,
+});
+addToArray<Order>(orderQueue, {
+  id: orderId++,
+  pizza: menu[2],
+  status: "completed",
+});
 
 console.log(menu);
 console.log(orderQueue);
