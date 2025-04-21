@@ -1,16 +1,17 @@
-var ages = [100, 101];
+"use strict";
+let ages = [100, 101];
 ages.push();
-var People1 = {
+let People1 = {
     name: "Joe",
     age: 42,
     isStudent: true
 };
-var People2 = {
+let People2 = {
     name: "Jill",
     age: 66,
     isStudent: false
 };
 // let PeopleArray: People[] =[People1, People2]
 // console.log(PeopleArray)
-var PeopleArray = [People1, People2];
+let PeopleArray = [People1, People2];
 console.log(PeopleArray);

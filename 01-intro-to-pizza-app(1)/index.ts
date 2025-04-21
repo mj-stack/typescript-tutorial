@@ -54,9 +54,24 @@ function completeOrder(orderId: number) {
   return order;
 }
 
-placeOrder("Margherita");
-placeOrder("Pepperoni");
-console.log(menu);
-console.log(cashInRegister);
-console.log(orderQueue);
-console.log(completeOrder(1));
+const getPizzaDetail = (identifier: Pizza | string | number) => {
+  if (!identifier) {
+    console.log("Identifier is required")
+    return
+  }
+  if (typeof identifier === "string") {
+    return menu.find(pizza => pizza.name.toLowerCase() === identifier.toLowerCase())
+  }
+  if (typeof identifier === "number") {
+    return menu.find(pizza => pizza.id === identifier)
+  }
+}
+
+console.log(getPizzaDetail("Margherita"))
+console.log(getPizzaDetail(2))
+// placeOrder("Margherita");
+// placeOrder("Pepperoni");
+// console.log(menu);
+// console.log(cashInRegister);
+// console.log(orderQueue);
+// console.log(completeOrder(1));

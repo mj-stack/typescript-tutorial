@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "lib": ["ES2015", "DOM"],                         /* Added to support .find and other modern features */
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  }
+}
